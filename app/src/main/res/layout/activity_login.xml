@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="100dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/merienda_bold"
+                    android:paddingBottom="10dp"
+                    android:text="@string/telepush_messaging"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/emailInputEditText"
+                    android:text="@string/email_label"
+                    android:textColor="@color/whitish" />
+
+                <EditText
+                    android:id="@+id/emailInputEditText"
+                    style="@style/InputTextEdit.Normal.SingleLine"
+                    android:inputType="textEmailAddress" />
+
+                <TextView
+                    android:labelFor="@id/passwordInputEditText"
+                    android:text="@string/password_label"
+                    style="@style/LabelAuthorization"
+                    />
+
+                <EditText
+                    android:id="@+id/passwordInputEditText"
+                    android:inputType="textPassword"
+                    style="@style/InputTextEdit.Normal.SingleLine" />
+
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:enabled="false"
+                    android:onClick="OnLoginButtonClick"
+                    android:text="@string/login_label"
+                    style="@style/RoundedButton"/>
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/secondary_text"
+        app:layout_constraintBottom_toTopOf="@id/toRegisterActivityButton"
+        >
+    </View>
+
+    <Button
+        android:id="@+id/toRegisterActivityButton"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:background="@color/cardview_light_background"
+        android:onClick="OnToRegisterActivityButtonClick"
+        android:text="@string/to_register_activity_button_text"
+        android:textColor="@color/secondary_text"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</LinearLayout>

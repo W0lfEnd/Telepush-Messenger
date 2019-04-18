@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/very_light_grey"
+    tools:context=".activities.ChatActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/Toolbar"
+        android:id="@+id/myToolbar">
+        <ImageButton
+            style="@style/ToolbarButton"
+            android:src="@drawable/ic_arrow_back"
+            android:onClick="backToPreviousActivity" />
+        <TextView
+            android:id="@+id/emailTextView"
+            style="@style/ChatUserName"
+            android:text="example@example.com"
+            />
+        <ImageButton
+            style="@style/ToolbarButton.MoreVertical"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <ProgressBar
+        android:id="@+id/messageFetchingProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="1"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/message_item" />
+
+    <LinearLayout
+        android:id="@+id/bottom_Panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:background="@color/primary_dark"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/messageInput"
+            android:hint="@string/enter_your_message_here"
+            style="@style/InputTextEdit.Slim.Multiline"
+            android:layout_weight="1"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="8dp"
+            />
+
+
+        <ImageButton
+            android:id="@+id/send_button_imageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/ripple"
+            android:onClick="onSendMessageClick"
+            android:src="@drawable/ic_send_message"
+            android:scaleType="center"
+            android:tint="@color/white"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

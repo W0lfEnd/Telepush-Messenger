@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".activities.ContactsActivity">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/myToolbar"
+        style="@style/Toolbar">
+        <android.support.v7.widget.AppCompatImageButton
+            style="@style/ToolbarButton.MoreVertical"
+            android:layout_gravity = "start"
+            android:id="@+id/moreToolbarButton"
+            android:onClick="OnMoreVerticalButtonClick" />
+        <android.support.v7.widget.AppCompatImageButton
+            style="@style/ToolbarButton.Search"
+            android:id="@+id/searchToolbarButton"
+            android:onClick="OnSearchButtonClick"
+
+            />
+        <EditText
+            android:id="@+id/searchContactsEditText"
+            style="@style/InputTextEdit.Slim.SingleLine"
+            android:hint="@string/search_contact"
+            android:imeOptions="actionSearch"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshContacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/contactsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="14"
+            tools:listitem="@layout/contact_item"
+            android:background="@color/whitish"
+            />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:id="@+id/searchedContactsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:text="Founded contacts"
+                android:textSize="8pt"
+                android:textAlignment="center"
+                android:textColor="@color/white"/>
+        </FrameLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/searchedContactsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="14"
+            tools:listitem="@layout/searched_contact_item"
+            android:background="@color/whitish" />
+    </LinearLayout>
+
+
+</LinearLayout>

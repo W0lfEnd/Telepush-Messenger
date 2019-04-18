@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/invisible"
+    android:orientation="vertical"
+    android:paddingBottom="6dp"
+    android:paddingTop="2dp">
+
+
+    <LinearLayout
+        android:id="@+id/message_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/messages_layout_margin_left"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/messages_layout_margin_right"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/message_styled_background"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:id="@+id/message_item_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:paddingStart="8dp"
+            android:text="messasdasdasdasage"
+            android:textColor="@color/blackish"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/messate_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="5dp"
+            android:text="date"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+
+</FrameLayout>

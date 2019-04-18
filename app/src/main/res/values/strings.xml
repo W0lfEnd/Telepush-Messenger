@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Telepush</string>
+    <string name="user_password">12345</string>
+    <string name="when_user_data_incorrect_title">Validation error</string>
+    <string name="when_user_data_incorrect_message">An account with this data does not exist</string>
+    <string name="try_again">Try again</string>
+    <string name="to_register_activity_button_text">If you <b>do not have an account</b> yet</string>
+    <string name="to_login_activity_button_text">Back to <b>login</b></string>
+    <string name="enter_your_message_here">Enter your message here</string>
+    <string name="telepush_messaging">Telepush</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="login_label">Login</string>
+    <string name="search_contact">Search contact</string>
+    <string name="register_label">Register</string>
+    <string name="confirm_password_label">Confirm password</string>
+    <string name="searched_contact_add">+</string>
+    <string name="do_you_want_delete_contact">Do you want delete %1$s contact</string>
+    <string name="delete_contact">Delete contact</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <dimen name="messages_layout_margin_left">140dp</dimen>
+    <dimen name="messages_layout_margin_right">3dp</dimen>
+    <dimen name="contact_item_height">70dp</dimen>
+    <dimen name="menu_control_button_size">80dp</dimen>
+    <dimen name="input_text_edit_height">35dp</dimen>
+
+
+</resources>
