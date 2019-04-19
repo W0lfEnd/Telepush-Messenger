@@ -28,7 +28,6 @@ import com.bigblackwolf.apps.telepush.data.network.firebase.FCMReceiver
 import com.bigblackwolf.apps.telepush.utils.DateTimeHelper
 import java.time.LocalDateTime
 
-//TODO Крашить коли відправляють сообщєніє користувачу, з яким ще не було ні одного сообщєнія
 
 class ChatActivity : AppCompatActivity() {
 
@@ -104,9 +103,6 @@ class ChatActivity : AppCompatActivity() {
                     {
                         fetchMessages()
                     }
-                }
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
                 }
             })
         })
