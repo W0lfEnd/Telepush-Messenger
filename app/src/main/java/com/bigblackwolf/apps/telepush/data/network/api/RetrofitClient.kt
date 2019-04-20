@@ -15,7 +15,8 @@ private val instance: Retrofit
                 // JULIA
                 //.baseUrl("http://192.168.0.104/api/")
                 //HOME
-                .baseUrl("http://192.168.1.5/api/")
+                .baseUrl("http://192.168.1.5/")
+                //.baseUrl("http://telepushyii.local/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

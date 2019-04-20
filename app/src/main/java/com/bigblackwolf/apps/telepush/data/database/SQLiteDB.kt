@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class SQLiteDB(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DB_VERSION) {
     companion object {
         const val DATABASE_NAME = "TelepushDB"
-        const val DB_VERSION = 1
+        const val DB_VERSION = 2
         abstract class TableUSER{
             companion object {
                 const val TABLE_NAME = "USER"
@@ -47,7 +47,7 @@ class SQLiteDB(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 "${TableUSER.EMAIL}                NVARCHAR(50) UNIQUE NOT NULL," +
                 "${TableUSER.LOGIN}                NVARCHAR(30) UNIQUE NOT NULL," +
                 "${TableUSER.NICKNAME}             NVARCHAR(30) NOT NULL," +
-                "${TableUSER.USER_ICON_LOCAL_PATH} NVARCHAR NOT NULL" +
+                "${TableUSER.USER_ICON_LOCAL_PATH} NVARCHAR(64) NOT NULL" +
                 ")"
         )
 
@@ -58,8 +58,8 @@ class SQLiteDB(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 "${TableMESSAGE.ID_USER_SENDER}  INTEGER  REFERENCES USER (ID_USER_ON_SERVER) NOT NULL," +
                 "${TableMESSAGE.ID_USER_TARGET}  INTEGER  REFERENCES USER (ID_USER_ON_SERVER) NOT NULL," +
                 "${TableMESSAGE.MESSAGE_TEXT}    TEXT     NOT NULL," +
-                "${TableMESSAGE.DATE_OF_SENDING} TIMESTAMP NOT NULL," +
-                "${TableMESSAGE.DATE_OF_ARRIVE}  TIMESTAMP" +
+                "${TableMESSAGE.DATE_OF_SENDING} VARCHAR(24) NOT NULL," +
+                "${TableMESSAGE.DATE_OF_ARRIVE}  VARCHAR(24)" +
                 ")"
         )
 

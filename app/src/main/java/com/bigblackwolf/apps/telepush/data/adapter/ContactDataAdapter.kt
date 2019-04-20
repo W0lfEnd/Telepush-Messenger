@@ -2,7 +2,6 @@ package com.bigblackwolf.apps.telepush.data.adapter
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -13,7 +12,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bigblackwolf.apps.telepush.R
 import com.bigblackwolf.apps.telepush.activities.ChatActivity
-import com.bigblackwolf.apps.telepush.data.network.api.ITelepushApi
 import com.bigblackwolf.apps.telepush.data.network.api.RetrofitClient
 import com.bigblackwolf.apps.telepush.data.network.firebase.Auth
 import com.bigblackwolf.apps.telepush.data.pojo.ContactPojo
@@ -114,7 +112,7 @@ class ContactDataAdapter : RecyclerView.Adapter<ContactDataAdapter.ContactViewHo
 
     fun deleteContact(email:String)
     {
-        val call = RetrofitClient.getApi().deleteUserFromContacts(email, Auth.getBasicAuthHeader())
+        val call = RetrofitClient.getApi().deleteUserFromContacts(email, Auth.getBearerAuthHeader())
         call.enqueue(object : Callback<ResponseStatus> {
 
             override fun onFailure(call: Call<ResponseStatus>, t: Throwable) {

@@ -7,27 +7,27 @@ import retrofit2.http.*
 
 interface ITelepushApi  {
 
-    @GET("message/")
+    @GET("messages/{user}")
     fun getMessage(
-            @Query("user") userEmail: String,
+            @Path("user") userEmail: String,
             @Query("from") fromMessageNumber: Int,
             @Query("to") toMessageNumber: Int,
             @Header("Authorization") authHeader: String
     ): Call<ResponseMessages>
 
-    @GET("contact/")
+    @GET("contacts")
     fun getContacts(
             @Header("Authorization") authHeader: String
     ): Call<List<ContactPojo>>
 
-    @GET("contact/")
+    @GET("contacts/{search}")
     fun getFindUsers(
-            @Query("search") search: String,
+            @Path("search") search: String,
             @Header("Authorization") authHeader: String
     ): Call<List<UserPojo>>
 
     @FormUrlEncoded
-    @POST("contact/")
+    @POST("contact")
     fun addUserToContacts(
             @Field("email") userEmail: String,
             @Header("Authorization") authHeader: String
@@ -41,7 +41,7 @@ interface ITelepushApi  {
     ): Call<ResponseStatus>
 
     @FormUrlEncoded
-    @POST("message/")
+    @POST("message")
     fun sendMessage(
             @Field("email") userEmail: String,
             @Field("message_text") message: String,
@@ -49,13 +49,13 @@ interface ITelepushApi  {
     ): Call<ResponseStatus>
 
     @FormUrlEncoded
-    @POST("user/")
+    @POST("user")
     fun registerUser(
             @Field("email") userEmail: String
     ): Call<ResponseStatus>
 
     @FormUrlEncoded
-    @PUT("user/token/new/")
+    @PUT("user/token")
     fun updateUserToken(
             @Field("token") newToken: String,
             @Header("Authorization") authHeader: String

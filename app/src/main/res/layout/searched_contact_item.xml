@@ -71,7 +71,7 @@
                         android:scaleType="fitXY"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@color/invisible"
+                        android:background="@drawable/ripple_circle"
                         android:tint="@color/secondary_text"
                         />
                 </FrameLayout>

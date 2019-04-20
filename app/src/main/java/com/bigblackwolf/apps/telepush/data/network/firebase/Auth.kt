@@ -2,7 +2,6 @@ package com.bigblackwolf.apps.telepush.data.network.firebase
 
 import android.content.Context
 import android.content.Intent
-import android.util.Base64
 import android.util.Log
 import com.bigblackwolf.apps.telepush.activities.ContactsActivity
 import com.bigblackwolf.apps.telepush.activities.LoginActivity
@@ -25,15 +24,14 @@ class Auth {
         val currentUser: FirebaseUser?
             get() = instance.currentUser
 
-        fun getBasicAuthHeader(): String {
-            val header = "$userEmail:$userToken"
-            return "Basic " + Base64.encodeToString(header.toByteArray(), Base64.NO_WRAP)
+        fun getBearerAuthHeader(): String {
+           return "Bearer $userToken"
         }
         fun loginSuccessful(context: Context) {
             userEmail = instance.currentUser!!.email!!
             instance.currentUser!!.getIdToken(true).addOnSuccessListener {
                 userToken = it.token!!
-                //Log.i(TAG,"Auth.header: " + Auth.getBasicAuthHeader())
+                //Log.i(TAG,"Auth.header: " + Auth.getBearerAuthHeader())
                 Log.i(TAG, "Current user: ${instance.currentUser!!.email}")
                 Log.i(TAG, "Token for login: $userToken")
                 //send send_token to remote database
@@ -62,7 +60,7 @@ class Auth {
                 return
             FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
                 Log.i(TAG, "Token for sending: ${it.token}")
-                val call = RetrofitClient.getApi().updateUserToken(it.token, Auth.getBasicAuthHeader())
+                val call = RetrofitClient.getApi().updateUserToken(it.token, Auth.getBearerAuthHeader())
                 call.enqueue(object : Callback<ResponseStatus> {
                     override fun onResponse(call: Call<ResponseStatus>, response: Response<ResponseStatus>) {
                         if (response.isSuccessful) {

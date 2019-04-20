@@ -182,7 +182,7 @@ class ContactsActivity : AppCompatActivity() {
 
     public fun loadContacts() {
         val telepushApi = RetrofitClient.getApi()
-        val call: Call<List<ContactPojo>> = telepushApi.getContacts(Auth.getBasicAuthHeader())
+        val call: Call<List<ContactPojo>> = telepushApi.getContacts(Auth.getBearerAuthHeader())
         Log.i(TAG,"Fetching contacts...")
         call.enqueue(object : Callback<List<ContactPojo>> {
 
@@ -217,7 +217,7 @@ class ContactsActivity : AppCompatActivity() {
         hideKeyboard()
 
         Log.i(TAG,"Searching users by string: ${searchContactsEditText.text}")
-        val call =telepushApi.getFindUsers(searchContactsEditText.text.toString(),Auth.getBasicAuthHeader())
+        val call =telepushApi.getFindUsers(searchContactsEditText.text.toString(),Auth.getBearerAuthHeader())
         Log.i(TAG,"Call: ${call.request()}")
         call.enqueue(object : Callback<List<UserPojo>>{
 

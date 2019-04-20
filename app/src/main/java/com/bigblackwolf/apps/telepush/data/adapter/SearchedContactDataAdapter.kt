@@ -1,28 +1,22 @@
 package com.bigblackwolf.apps.telepush.data.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.bigblackwolf.apps.telepush.R
-import com.bigblackwolf.apps.telepush.activities.ChatActivity
 import com.bigblackwolf.apps.telepush.activities.ContactsActivity
-import com.bigblackwolf.apps.telepush.data.network.api.ITelepushApi
 import com.bigblackwolf.apps.telepush.data.network.api.RetrofitClient
 import com.bigblackwolf.apps.telepush.data.network.firebase.Auth
-import com.bigblackwolf.apps.telepush.data.pojo.ContactPojo
 import com.bigblackwolf.apps.telepush.data.pojo.ResponseStatus
 import com.bigblackwolf.apps.telepush.data.pojo.UserPojo
 import kotlinx.android.synthetic.main.searched_contact_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 import kotlin.collections.ArrayList
 
 class SearchedContactDataAdapter : RecyclerView.Adapter<SearchedContactDataAdapter.SearchedContactViewHolder> {
@@ -38,7 +32,7 @@ class SearchedContactDataAdapter : RecyclerView.Adapter<SearchedContactDataAdapt
             email.text = userItem.email
             itemView.addUserToContactsButton.setOnClickListener {
                 itemView.addUserToContactsButton.isEnabled = false
-                val call = RetrofitClient.getApi().addUserToContacts(userItem.email,Auth.getBasicAuthHeader())
+                val call = RetrofitClient.getApi().addUserToContacts(userItem.email,Auth.getBearerAuthHeader())
                 call.enqueue(object :Callback<ResponseStatus>{
 
                     override fun onFailure(call: Call<ResponseStatus>, t: Throwable) {

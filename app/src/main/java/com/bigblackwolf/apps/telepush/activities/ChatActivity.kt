@@ -17,7 +17,6 @@ import com.bigblackwolf.apps.telepush.data.pojo.ResponseStatus
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.TextView
 import android.content.Intent
@@ -26,7 +25,6 @@ import android.content.Context
 import android.content.IntentFilter
 import com.bigblackwolf.apps.telepush.data.network.firebase.FCMReceiver
 import com.bigblackwolf.apps.telepush.utils.DateTimeHelper
-import java.time.LocalDateTime
 
 
 class ChatActivity : AppCompatActivity() {
@@ -117,7 +115,7 @@ class ChatActivity : AppCompatActivity() {
             return
         isNowFetching = true
         val telepushApi = RetrofitClient.getApi()
-        val call: Call<ResponseMessages> = telepushApi.getMessage(anotherUserEmail, messageRangeStart, messageRangeStart + messageRangeStep, Auth.getBasicAuthHeader())
+        val call: Call<ResponseMessages> = telepushApi.getMessage(anotherUserEmail, messageRangeStart, messageRangeStart + messageRangeStep, Auth.getBearerAuthHeader())
         Log.i(TAG, "Fetching messages...")
         messageFetchingProgressBar.visibility = View.VISIBLE
         call.enqueue(object : Callback<ResponseMessages> {
@@ -183,7 +181,7 @@ class ChatActivity : AppCompatActivity() {
         Log.i(TAG, "Sending message to $anotherUserEmail...")
         val newMessage = MessagePojo(Auth.userEmail, message, DateTimeHelper.getCurrentServerTime(),true)
         addMessageToRecycler(newMessage)
-        val call = RetrofitClient.getApi().sendMessage(anotherUserEmail, message, Auth.getBasicAuthHeader())
+        val call = RetrofitClient.getApi().sendMessage(anotherUserEmail, message, Auth.getBearerAuthHeader())
         call.enqueue(object : Callback<ResponseStatus> {
             override fun onResponse(call: Call<ResponseStatus>, response: Response<ResponseStatus>) {
                 if (response.isSuccessful) {
